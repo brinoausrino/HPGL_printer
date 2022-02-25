@@ -1,5 +1,7 @@
-bin/*
+!bin
+bin/**/*
+!bin/**/settings.json
+
 obj/*
 *.qbs
 *.qbs.*
-!bin/data/settings.json
