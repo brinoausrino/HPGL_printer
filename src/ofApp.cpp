@@ -2,13 +2,12 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-	hp.setup( "/dev/ttyUSB0" );
+	ofJson settings = ofLoadJson("settings.json");
+	hp.setup( settings["device"].get<string>());
     
-	setPaperSize(297.,210.);
+	setPaperSize(settings["paperSize"][0].get<float>(),settings["paperSize"][1].get<float>());
 
-
-
-	cout << hp.getAvailBufferSize() <<endl;
+	cout << "max buffer size : " << hp.getAvailBufferSize() <<endl;
 	hp.enableCapture();
 }
 

@@ -2,3 +2,4 @@ bin/*
 obj/*
 *.qbs
 *.qbs.*
+!bin/data/settings.json
