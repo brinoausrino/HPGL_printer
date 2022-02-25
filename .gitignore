@@ -1,4 +1,5 @@
 !bin
+bin/*
 bin/data/*
 !bin/data/settings.json
 
