@@ -1,6 +1,6 @@
 !bin
 bin/**/*
-!bin/**/settings.json
+!bin/data/settings.json
 
 obj/*
 *.qbs
