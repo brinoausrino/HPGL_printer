@@ -6,7 +6,9 @@ void ofApp::setup() {
 	hp.setup( settings["device"].get<string>());
     
 	setPaperSize(settings["paperSize"][0].get<float>(),settings["paperSize"][1].get<float>());
-
+    cout << "sendPenSelectCommand " << settings["sendPenSelectCommand"].get<bool>() <<endl;
+    hp.setPenSelectSending(settings["sendPenSelectCommand"].get<bool>());
+    
 	cout << "max buffer size : " << hp.getAvailBufferSize() <<endl;
 	hp.enableCapture();
 }
@@ -49,6 +51,7 @@ ofSetColor(200);
 	ss << "paperSize " << paperWidth << " x " << paperHeight << "mm (" << (paperWidth == 297. ? "A4" : "A3") << ") - change format (d)" <<endl;
 	ss << "loadFile( )" <<endl;
     ss << "print(p) " << endl;
+    ss << "toggleSendPenSelect(s) "<< endl;
     ss << "clear(DEL)" << endl;
     ofSetColor( 30 );
 	ofDrawBitmapString( ss.str(), 30, 22 );
@@ -71,6 +74,10 @@ void ofApp::keyPressed(int key){
     }
 	if(key == 'f')ofToggleFullscreen();
 
+    if(key == 's'){
+        hp.setPenSelectSending(!hp.getPenSelect());
+    }
+    
 	if(key == 'd'){
 		if(paperWidth == 297.){
 			setPaperSize(420.,297.);
@@ -196,7 +203,9 @@ void ofApp::windowResized(int w, int h){
 void ofApp::gotMessage(ofMessage msg){
 
 }
-
+void ofApp::setPenSelectSending(bool b){
+    hp.setPenSelectSending(b);
+}
 void ofApp::setPaperSize(float width, float height)
 {
 	paperWidth = width;

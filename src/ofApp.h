@@ -24,7 +24,8 @@ public:
 	void gotMessage(ofMessage msg);
 
 	void setPaperSize(float width, float height);
-
+    void setPenSelectSending(bool b);
+    
 	void processOpenFileSelection(ofFileDialogResult openFileResult);
 	void addFileSelection(ofFileDialogResult openFileResult);
 
